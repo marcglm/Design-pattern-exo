@@ -20,15 +20,17 @@ public class Kebab {
     bool salade;
     bool tomate;
     bool oignons;
+    int fromage;
     Sauce complementSauce;
     Complement viande;
 
-    public Kebab(bool salade, bool tomate, bool oignons, Sauce sauce, Complement compl){
+    public Kebab(bool salade, bool tomate, bool oignons, Sauce sauce, Complement compl, int fromage){
         this.salade = salade;
         this.tomate = tomate;
         this.oignons = oignons;
         complementSauce = sauce;
         viande = compl;
+        this.fromage = fromage;
     }
     public bool isVegetarien(){
             return this.salade && this.tomate && this.oignons ? true : false;
@@ -40,10 +42,15 @@ public class Kebab {
 
     public Kebab sansOignons(){
         if (this.oignons) {
-            Kebab newKebab = new Kebab(this.salade,this.tomate,false, this.complementSauce,this.viande);
-            return newKebab;
+            return new Kebab(this.salade,this.tomate,false, this.complementSauce,this.viande, this.fromage);  
         }
-        return Kebab(this.)
+        return new Kebab(this.salade,this.tomate,this.oignons,this.complementSauce,this.viande, this.fromage);
+    }
+
+    public Kebab supplementFromage(){
+        this.fromage++;
+        return new Kebab(this.salade,this.tomate,this.oignons,this.complementSauce,this.viande, this.fromage);
+
     }
 
 }
